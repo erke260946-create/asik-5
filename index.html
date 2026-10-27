@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assignment 5 · JavaScript & DOM</title>
+<link rel="stylesheet" href="style.css">
+<script src="task1.js" defer></script>
+<script src="task2.js" defer></script>
+<script src="task3.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <h1>Assignment 5</h1>
+  <nav aria-label="Tasks"><a href="#game">Task 1: Game</a><a href="#kanban">Task 2: Kanban</a><a href="#creator">Task 3: Form</a></nav>
+</header>
+<main>
+
+<section id="game" aria-labelledby="t1">
+  <h2 id="t1">Task 1 · Higher or Lower</h2>
+  <p>Is the next item's price higher or lower? Equal prices count as a right guess. Reach the winning streak before you lose all lives.</p>
+  <div id="g-box" class="panel" data-state="play">
+    <div class="stats">
+      <span>Lives: <b id="g-lives"></b></span>
+      <span>Streak: <b id="g-streak"></b></span>
+      <span>Best: <b id="g-best"></b></span>
+    </div>
+    <p id="g-current" class="big"></p>
+    <p id="g-msg" class="msg info" role="status"></p>
+    <div class="row">
+      <button id="g-higher" type="button">Higher</button>
+      <button id="g-lower" type="button">Lower</button>
+      <button id="g-restart" type="button" class="ghost">Restart</button>
+    </div>
+  </div>
+</section>
+
+<section id="kanban" aria-labelledby="t2">
+  <h2 id="t2">Task 2 · Kanban board</h2>
+  <div class="row tools">
+    <label>Tag <select id="k-filter"></select></label>
+    <label class="inline"><input type="checkbox" id="k-sort" checked> Sort by priority</label>
+    <label class="grow">Done <progress id="k-progress" value="0" max="1"></progress> <span id="k-percent"></span></label>
+  </div>
+  <p id="k-msg" class="msg info" role="status"></p>
+  <div id="k-board" class="board"></div>
+</section>
+
+<section id="creator" aria-labelledby="t3">
+  <h2 id="t3">Task 3 · Character creator</h2>
+  <div class="split">
+    <form id="c-form" class="panel" novalidate>
+      <p id="c-summary" class="msg" role="alert" tabindex="-1"></p>
+      <label for="c-name">Name</label>
+      <input id="c-name" name="name" type="text" required minlength="3" maxlength="16" autocomplete="off" aria-describedby="c-err-name">
+      <span id="c-err-name" class="err"></span>
+
+      <label for="c-cls">Class</label>
+      <select id="c-cls" required aria-describedby="c-err-cls">
+        <option value="">Choose a class</option>
+        <option value="mage">Mage (magic 5+)</option>
+        <option value="warrior">Warrior (strength 5+)</option>
+        <option value="rogue">Rogue (agility 5+)</option>
+      </select>
+      <span id="c-err-cls" class="err"></span>
+
+      <label for="c-color">Color</label>
+      <select id="c-color" required aria-describedby="c-err-color">
+        <option value="">Choose a color</option>
+        <option value="red">Red</option><option value="blue">Blue</option>
+        <option value="green">Green</option><option value="purple">Purple</option>
+      </select>
+      <span id="c-err-color" class="err"></span>
+
+      <p class="points">Points left: <b id="c-left">0</b> of 20</p>
+      <div class="skills">
+        <div><label for="c-strength">Strength</label><input id="c-strength" type="number" min="1" max="10" step="1" value="5" required aria-describedby="c-err-strength"><span id="c-err-strength" class="err"></span></div>
+        <div><label for="c-agility">Agility</label><input id="c-agility" type="number" min="1" max="10" step="1" value="5" required aria-describedby="c-err-agility"><span id="c-err-agility" class="err"></span></div>
+        <div><label for="c-magic">Magic</label><input id="c-magic" type="number" min="1" max="10" step="1" value="5" required aria-describedby="c-err-magic"><span id="c-err-magic" class="err"></span></div>
+        <div><label for="c-luck">Luck</label><input id="c-luck" type="number" min="1" max="10" step="1" value="5" required aria-describedby="c-err-luck"><span id="c-err-luck" class="err"></span></div>
+      </div>
+      <div class="row"><button type="submit">Create character</button><button type="reset" class="ghost">Reset</button></div>
+    </form>
+
+    <div>
+      <h3>Live preview</h3>
+      <article id="c-preview" class="card hero" data-color="">
+        <h4 id="c-p-name"></h4>
+        <p id="c-p-cls"></p>
+        <ul>
+          <li>Strength <b id="c-p-strength"></b></li><li>Agility <b id="c-p-agility"></b></li>
+          <li>Magic <b id="c-p-magic"></b></li><li>Luck <b id="c-p-luck"></b></li>
+        </ul>
+      </article>
+      <h3>Final character</h3>
+      <div id="c-result"><p class="empty">No character created yet.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+</body>
+</html>
